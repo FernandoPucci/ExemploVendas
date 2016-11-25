@@ -7,6 +7,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -14,7 +15,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -60,7 +60,7 @@ public class VendasApiController {
 	@Path("/get-tipos-embalagem")
 	@Produces(MediaType.APPLICATION_JSON)
 	@JacksonFeatures(serializationEnable = { SerializationFeature.INDENT_OUTPUT })
-	public TipoEmbalagem listAllTiposEmbalagens(@RequestParam("id") Long tipoEmbalagem) {
+	public TipoEmbalagem listAllTiposEmbalagens(@QueryParam("id") Long tipoEmbalagem) {
 
 		if (tipoEmbalagem == null) {
 			log.error("Transação inválida");

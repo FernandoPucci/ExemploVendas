@@ -49,11 +49,11 @@ public class ItemVenda implements Serializable {
 
 	@Column(name = "QUANTIDADE")
 	@JsonProperty("quantidade")
-	private Double quantidade;
+	private Double quantidade = 0.0;
 
 	@Column(name = "SUB_TOTAL")
 	@JsonProperty("sub_total")
-	private Double subTotal;
+	private Double subTotal = 0.0;
 
 	public Long getIdItemVenda() {
 		return idItemVenda;
@@ -84,7 +84,16 @@ public class ItemVenda implements Serializable {
 	}
 
 	public void setQuantidade(Double quantidade) {
+
+		if (this.produto != null && this.produto.getValorUnitario() != null) {
+
+			this.subTotal += quantidade * this.produto.getValorUnitario();
+
+			this.quantidade = quantidade;
+		}
+
 		this.quantidade = quantidade;
+
 	}
 
 	public Double getSubTotal() {
@@ -93,14 +102,8 @@ public class ItemVenda implements Serializable {
 
 	public void setSubTotal(Double subTotal) {
 
-		if (this.quantidade != null && this.quantidade != 0 && this.produto != null
-				&& this.produto.getValorUnitario() != null) {
-			this.subTotal = this.quantidade * this.produto.getValorUnitario();
+		this.subTotal = subTotal;
 
-		} else {
-
-			this.subTotal = subTotal;
-		}
 	}
 
 	@Override

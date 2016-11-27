@@ -2,6 +2,7 @@ package br.com.exemplo.vendas.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,6 +32,18 @@ public class Produto implements Serializable {
 	 */
 	private static final long serialVersionUID = -2626074609816922800L;
 
+	public Produto(Long idProduto, String descricao, Double valorUnitario, TipoEmbalagem tipoEmbalagem) {
+		super();
+		this.idProduto = idProduto;
+		this.descricao = descricao != null ? descricao.trim().toUpperCase() : descricao;
+		this.valorUnitario = valorUnitario;
+		this.tipoEmbalagem = tipoEmbalagem;
+	}
+
+	public Produto() {
+
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_PRODUTO")
@@ -46,7 +59,7 @@ public class Produto implements Serializable {
 	private Double valorUnitario;
 
 	@JsonProperty("tp_embalagem")
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name = "ID_TP_EMBALAGEM")
 	private TipoEmbalagem tipoEmbalagem;
 

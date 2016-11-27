@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.exemplo.vendas.controLler.VendaController;
+import br.com.exemplo.vendas.model.ItemVenda;
 import br.com.exemplo.vendas.model.Venda;
 
 @Service
@@ -17,6 +18,20 @@ public class VendaService {
 
 	public void insertVendaService(Venda venda) {
 
+		if(venda!=null){
+			
+			double valorTotal = 0.0;
+			
+			for(ItemVenda i : venda.getItens()){
+				
+				valorTotal += i.getSubTotal(); 
+					
+			}
+			
+			venda.setValorTotal(valorTotal);
+			
+		}
+		
 		vendaController.inserirVendaController(venda);
 
 	}

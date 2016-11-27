@@ -2,6 +2,7 @@ package br.com.exemplo.vendas.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -29,32 +30,44 @@ import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 @Entity
 @Table(name = "VENDA")
 @JsonAutoDetect
-public class Venda implements Serializable{
+public class Venda implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2489826485239793800L;
-	
+
+	public Venda() {
+		super();
+		if (this.dataVenda == null) {
+			this.dataVenda = new Date(System.currentTimeMillis());
+		}
+
+		if (this.itens == null) {
+
+			this.itens = new HashSet<>();
+		}
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_VENDA")
 	@JsonProperty("id_venda")
 	private Long idVenda;
-	
+
 	@Column(name = "DT_VENDA")
 	@JsonSerialize(using = DateSerializer.class)
 	@Temporal(value = TemporalType.TIMESTAMP)
 	@JsonProperty("dt_venda")
 	private Date dataVenda;
-	
+
 	@OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
 	@JsonProperty("itens_venda")
 	private Set<ItemVenda> itens;
-	
+
 	@Column(name = "VLR_TOTAL")
 	@JsonProperty("vlr_total")
-	private Double valorTotal;
+	private Double valorTotal = 0.0;
 
 	public Long getIdVenda() {
 		return idVenda;
@@ -92,6 +105,6 @@ public class Venda implements Serializable{
 	public String toString() {
 		return "Venda [idVenda=" + idVenda + ", dataVenda=" + dataVenda + ", itens=" + itens + ", valorTotal="
 				+ valorTotal + "]";
-	}	
+	}
 
 }

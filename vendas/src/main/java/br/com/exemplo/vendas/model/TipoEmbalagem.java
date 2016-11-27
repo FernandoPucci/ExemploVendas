@@ -27,7 +27,16 @@ public class TipoEmbalagem implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 7175711914118229209L;
+	
+	public TipoEmbalagem(String descricao) {
+		super();
+		this.descricao = descricao != null ? descricao.trim().toUpperCase() : descricao;;
+	}
 
+	public TipoEmbalagem() {
+		
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_TP_EMBALAGEM")

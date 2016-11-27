@@ -1,4 +1,4 @@
-package br.com.exemplo.vendas.controler;
+package br.com.exemplo.vendas.controLler;
 
 import java.util.List;
 

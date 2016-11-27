@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.exemplo.vendas.controler.TipoEmbalagemController;
+import br.com.exemplo.vendas.controLler.TipoEmbalagemController;
 import br.com.exemplo.vendas.model.TipoEmbalagem;
 
 @Service

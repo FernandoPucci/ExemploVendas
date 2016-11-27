@@ -26,7 +26,7 @@ public class VendasApplicationTests {
 	}
 	
 	@Test
-	public void testInsertTipoEmbalagem(){
+	public void testInsertAndListTipoEmbalagem(){
 		
 		TipoEmbalagem te = new TipoEmbalagem();
 		

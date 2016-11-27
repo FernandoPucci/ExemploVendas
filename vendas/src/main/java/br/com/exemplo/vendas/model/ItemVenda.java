@@ -25,23 +25,23 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 @Table(name = "ITEM_VENDA")
 @JsonAutoDetect
-public class ItemVenda implements Serializable  {
+public class ItemVenda implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -727394159569003805L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_ITEM_VENDA")
 	@JsonProperty("id_item_venda")
 	private Long idItemVenda;
-	
-    @ManyToOne
-    @JoinColumn(name = "ID_VENDA")
-	private Venda venda; 	
-	
+
+	@ManyToOne
+	@JoinColumn(name = "ID_VENDA")
+	private Venda venda;
+
 	@JsonProperty("produto")
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_PRODUTO")
@@ -49,8 +49,8 @@ public class ItemVenda implements Serializable  {
 
 	@Column(name = "QUANTIDADE")
 	@JsonProperty("quantidade")
-	private Double quantidade; 
-	
+	private Double quantidade;
+
 	@Column(name = "SUB_TOTAL")
 	@JsonProperty("sub_total")
 	private Double subTotal;
@@ -92,7 +92,15 @@ public class ItemVenda implements Serializable  {
 	}
 
 	public void setSubTotal(Double subTotal) {
-		this.subTotal = subTotal;
+
+		if (this.quantidade != null && this.quantidade != 0 && this.produto != null
+				&& this.produto.getValorUnitario() != null) {
+			this.subTotal = this.quantidade * this.produto.getValorUnitario();
+
+		} else {
+
+			this.subTotal = subTotal;
+		}
 	}
 
 	@Override

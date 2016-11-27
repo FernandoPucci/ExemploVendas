@@ -63,7 +63,8 @@ public class Produto implements Serializable {
 	}
 
 	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+		this.descricao = descricao != null ? descricao.trim().toUpperCase() : descricao;
+		;
 	}
 
 	public Double getValorUnitario() {

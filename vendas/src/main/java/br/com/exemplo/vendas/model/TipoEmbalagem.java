@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 @Table(name = "LKP_TP_EMBALAGEM")
 @JsonAutoDetect
-public class TipoEmbalagem implements Serializable{
+public class TipoEmbalagem implements Serializable {
 
 	/**
 	 * 
@@ -33,7 +33,7 @@ public class TipoEmbalagem implements Serializable{
 	@Column(name = "ID_TP_EMBALAGEM")
 	@JsonProperty("id_tp_embalagem")
 	private Long idTipoEmbalagem;
-	
+
 	@Column(name = "TP_EMBALAGEM")
 	@JsonProperty("tp_embalagem")
 	private String descricao;
@@ -51,13 +51,12 @@ public class TipoEmbalagem implements Serializable{
 	}
 
 	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+		this.descricao = descricao != null ? descricao.trim().toUpperCase() : descricao;
 	}
 
 	@Override
 	public String toString() {
 		return "TipoEmbalagem [idTipoEmbalagem=" + idTipoEmbalagem + ", descricao=" + descricao + "]";
-	}	
-	
-	
+	}
+
 }

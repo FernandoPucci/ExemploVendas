@@ -3,7 +3,8 @@ package br.com.exemplo.vendas;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.context.annotation.Configuration;
 
-import br.com.exemplo.vendas.ws.VendasApiController;
+import br.com.exemplo.vendas.ws.HealthCheckApiController;
+import br.com.exemplo.vendas.ws.TipoEmbalagemApiController;
 
 /**
  * @author fernandopucci
@@ -15,7 +16,8 @@ public class JerseyConfig extends ResourceConfig {
 	
 	
 		public JerseyConfig() {
-			register(VendasApiController.class);
+			register(TipoEmbalagemApiController.class);
+			register(HealthCheckApiController.class);
 
 	}
 }

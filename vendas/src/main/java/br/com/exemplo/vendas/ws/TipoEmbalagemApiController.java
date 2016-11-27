@@ -29,22 +29,13 @@ import br.com.exemplo.vendas.service.TipoEmbalagemService;
  */
 @Component
 @RestController
-@Path("/API")
-public class VendasApiController {
+@Path("/API/tipos-embalagem")
+public class TipoEmbalagemApiController {
 
-	private static final Logger log = LoggerFactory.getLogger(VendasApiController.class);
+	private static final Logger log = LoggerFactory.getLogger(TipoEmbalagemApiController.class);
 
 	@Autowired
 	TipoEmbalagemService tipoEmbalagemService;
-
-	@GET
-	@Path("/test")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String testService() {
-
-		return "API Executando com Sucesso!";
-
-	}
 
 	@GET
 	@Path("/list-all-tipos-embalagem")

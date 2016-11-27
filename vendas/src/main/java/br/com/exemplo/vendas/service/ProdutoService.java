@@ -14,7 +14,7 @@ public class ProdutoService {
 	@Autowired
 	ProdutoController produtoController;
 
-	public void insertItemProdutoService(Produto produto) {
+	public void insertProdutoService(Produto produto) {
 
 		produtoController.inserirProdutoController(produto);
 

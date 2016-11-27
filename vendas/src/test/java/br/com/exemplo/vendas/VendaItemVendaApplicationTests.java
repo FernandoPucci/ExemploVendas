@@ -73,11 +73,7 @@ public class VendaItemVendaApplicationTests {
 		item.setProduto(produtoById);
 		item.setQuantidade(10.0);
 		
-		Set<ItemVenda> itensVenda = venda.getItens(); 
-		
-		venda.getItens().add(item);
-		
-		venda.setItens(itensVenda);
+		venda.addItem(item);
 		
 		vendaService.insertVendaService(venda);
 		

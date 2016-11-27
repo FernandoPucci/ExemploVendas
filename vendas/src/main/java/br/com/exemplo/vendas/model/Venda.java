@@ -43,10 +43,10 @@ public class Venda implements Serializable {
 			this.dataVenda = new Date(System.currentTimeMillis());
 		}
 
-		if (this.itens == null) {
-
-			this.itens = new HashSet<>();
-		}
+		// if (this.itens == null) {
+		//
+		// this.itens = new HashSet<>();
+		// }
 	}
 
 	@Id
@@ -61,7 +61,7 @@ public class Venda implements Serializable {
 	@JsonProperty("dt_venda")
 	private Date dataVenda;
 
-	@OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "venda", cascade = CascadeType.PERSIST)
 	@JsonProperty("itens_venda")
 	private Set<ItemVenda> itens;
 
@@ -99,6 +99,16 @@ public class Venda implements Serializable {
 
 	public void setValorTotal(Double valorTotal) {
 		this.valorTotal = valorTotal;
+	}
+
+	public void addItem(ItemVenda itemVenda) {
+		if (itemVenda != null) {
+			if (itens == null) {
+				itens = new HashSet<>();
+			}
+			itens.add(itemVenda);
+			itemVenda.setVenda(this);
+		}
 	}
 
 	@Override

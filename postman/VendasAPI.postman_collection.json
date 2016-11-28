@@ -1,0 +1,269 @@
+{
+	"variables": [],
+	"info": {
+		"name": "VendasAPI",
+		"_postman_id": "f8486cab-0447-caf8-7f7e-86f0c39458ac",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Produto",
+			"description": "",
+			"item": [
+				{
+					"name": "list-all-produto",
+					"request": {
+						"url": "http://localhost:8080/API/produto/list-all-produto",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"historic\":\n\t{ \t\n\t\t\"code\":\"1002\",\n\t\t\"name\":\"xxxxxx\",\n\t\t\"active\":\"0\"\n\t},\n\t\"commit\":\"Atualizar Histórico\",\n\t\"id\":\"2\"\n\t\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "get-produto",
+					"request": {
+						"url": "http://localhost:8080/API/produto/get-produto?id=1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"historic\":\n\t{ \t\n\t\t\"code\":\"1002\",\n\t\t\"name\":\"xxxxxx\",\n\t\t\"active\":\"0\"\n\t},\n\t\"commit\":\"Atualizar Histórico\",\n\t\"id\":\"2\"\n\t\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "register-produto",
+					"request": {
+						"url": "http://localhost:8080/API/produto/register-produto",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n  {\n    \"id_produto\": \"\",\n    \"descricao\": \"desinfetante\",\n    \"vlr_unitario\": 3.25,\n    \"tp_embalagem\": {\n      \"id_tp_embalagem\": 3\n    }\n  }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "EXEMPLO register-produto",
+					"request": {
+						"url": "http://localhost:8080/API/produto/exemplo/register-produto",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n  {\n    \"id_produto\": \"\",\n    \"descricao\": \"lasanha\",\n    \"vlr_unitario\": 5.2,\n    \"tp_embalagem\": {\n      \"id_tp_embalagem\": 2\n    }\n  }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TipoEmbalagem",
+			"description": "",
+			"item": [
+				{
+					"name": "list-all-tipos-embalagem",
+					"request": {
+						"url": "http://localhost:8080/API/tipos-embalagem/list-all-tipos-embalagem",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"historic\":\n\t{ \t\n\t\t\"code\":\"1002\",\n\t\t\"name\":\"xxxxxx\",\n\t\t\"active\":\"0\"\n\t},\n\t\"commit\":\"Atualizar Histórico\",\n\t\"id\":\"2\"\n\t\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "register-tipo-embalagem",
+					"request": {
+						"url": "http://localhost:8080/API/tipos-embalagem/register-tipo-embalagem",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n    \"tp_embalagem\": \"500ml\"\n  }\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "get-tipos-embalagem?id=1",
+					"request": {
+						"url": "http://localhost:8080/API/tipos-embalagem/get-tipos-embalagem?id=3",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"historic\":\n\t{ \t\n\t\t\"code\":\"1002\",\n\t\t\"name\":\"xxxxxx\",\n\t\t\"active\":\"0\"\n\t},\n\t\"commit\":\"Atualizar Histórico\",\n\t\"id\":\"2\"\n\t\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "EXEMPLO register-tipo-embalagem",
+					"request": {
+						"url": "http://localhost:8080/API/tipos-embalagem/exemplo/register-tipo-embalagem",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n    \"tp_embalagem\": \"PACOTE 500g\"\n  }\n"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vendas",
+			"description": "",
+			"item": [
+				{
+					"name": "list-all-venda",
+					"request": {
+						"url": "http://localhost:8080/API/vendas/list-all-venda",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"historic\":\n\t{ \t\n\t\t\"code\":\"1002\",\n\t\t\"name\":\"xxxxxx\",\n\t\t\"active\":\"0\"\n\t},\n\t\"commit\":\"Atualizar Histórico\",\n\t\"id\":\"2\"\n\t\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "get-venda",
+					"request": {
+						"url": "http://localhost:8080/API/vendas/get-venda?id=8",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"historic\":\n\t{ \t\n\t\t\"code\":\"1002\",\n\t\t\"name\":\"xxxxxx\",\n\t\t\"active\":\"0\"\n\t},\n\t\"commit\":\"Atualizar Histórico\",\n\t\"id\":\"2\"\n\t\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "register-venda",
+					"request": {
+						"url": "http://localhost:8080/API/vendas/register-venda",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id_venda\": \"\",\n  \"itens_venda\": [\n    {\n      \"produto\": {\n        \"id_produto\": 1\n        },\n      \"quantidade\": 16.0\n    },\n     {\n      \"produto\": {\n        \"id_produto\": 6\n        },\n      \"quantidade\": 5.0\n    }\n  ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "EXEMPLO register-venda",
+					"request": {
+						"url": "http://localhost:8080/API/vendas/exemplo/register-venda",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id_venda\": \"\",\n  \"itens_venda\": [\n    {\n      \"produto\": {\n        \"id_produto\": 3\n        },\n      \"quantidade\": 1.0\n    },\n    {\n      \"produto\": {\n        \"id_produto\": 1\n        },\n      \"quantidade\": 2.0\n    }\n  ]\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

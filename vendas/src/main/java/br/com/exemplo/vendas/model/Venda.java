@@ -19,10 +19,13 @@ import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
+
+import br.com.exemplo.vendas.util.Utils;
 
 /**
  * @author fernandopucci
@@ -44,11 +47,6 @@ public class Venda implements Serializable {
 		if (this.dataVenda == null) {
 			this.dataVenda = new Date(System.currentTimeMillis());
 		}
-
-//		if (this.itens == null) {
-//
-//			this.itens = new HashSet<>();
-//		}
 	}
 
 	@Id
@@ -60,12 +58,11 @@ public class Venda implements Serializable {
 	@Column(name = "DT_VENDA")
 	@JsonSerialize(using = DateSerializer.class)
 	@Temporal(value = TemporalType.TIMESTAMP)
-	@JsonProperty("dt_venda")
+	@JsonIgnore
 	private Date dataVenda;
 
 
 	@JsonProperty("itens_venda")
-//	@JsonIgnore
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "venda", cascade = CascadeType.ALL)
 	private Set<ItemVenda> itens = new HashSet<>();
 
@@ -81,8 +78,15 @@ public class Venda implements Serializable {
 		this.idVenda = idVenda;
 	}
 
+	@JsonIgnore
 	public Date getDataVenda() {
 		return dataVenda;
+	
+	}
+	
+	@JsonProperty("data-venda")
+	public String getDataVendaStr() {		
+		return Utils.formataData(dataVenda);
 	}
 
 	public void setDataVenda(Date dataVenda) {

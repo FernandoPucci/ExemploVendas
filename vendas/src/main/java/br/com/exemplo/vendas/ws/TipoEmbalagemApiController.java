@@ -22,6 +22,7 @@ import com.fasterxml.jackson.jaxrs.annotation.JacksonFeatures;
 
 import br.com.exemplo.vendas.model.TipoEmbalagem;
 import br.com.exemplo.vendas.service.TipoEmbalagemService;
+import br.com.exemplo.vendas.util.Constantes;
 
 /**
  * @author fernandopucci
@@ -89,6 +90,16 @@ public class TipoEmbalagemApiController {
 			log.error("Transação inválida " + ex.getMessage());
 			return Response.status(500).entity("Transação inválida " + ex.getMessage()).build();
 		}
+
+	}
+	
+	@GET
+	@Path("/exemplo/register-tipo-embalagem")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String testService() {
+
+		log.info(Constantes.INSERT_TIPO_EMBALAGEM_EXEMPLO);
+		return "Exemplo de chamada para /API/vendas/register-tipo-embalagem:\n" + Constantes.INSERT_TIPO_EMBALAGEM_EXEMPLO;
 
 	}
 

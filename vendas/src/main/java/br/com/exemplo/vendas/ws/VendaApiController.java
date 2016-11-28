@@ -22,6 +22,7 @@ import com.fasterxml.jackson.jaxrs.annotation.JacksonFeatures;
 
 import br.com.exemplo.vendas.model.Venda;
 import br.com.exemplo.vendas.service.VendaService;
+import br.com.exemplo.vendas.util.Constantes;
 
 /**
  * @author fernandopucci
@@ -89,6 +90,16 @@ public class VendaApiController {
 			log.error("Transação inválida " + ex.getMessage());
 			return Response.status(500).entity("Transação inválida " + ex.getMessage()).build();
 		}
+
+	}
+	
+	@GET
+	@Path("/exemplo/register-venda")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String testService() {
+
+		log.info(Constantes.INSERT_VENDA_EXEMPLO);
+		return "Exemplo de chamada para /API/vendas/register-venda:\n" + Constantes.INSERT_VENDA_EXEMPLO;
 
 	}
 

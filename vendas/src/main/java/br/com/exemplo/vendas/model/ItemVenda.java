@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -43,7 +44,7 @@ public class ItemVenda implements Serializable {
 	private Venda venda;
 
 	@JsonProperty("produto")
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ID_PRODUTO")
 	private Produto produto;
 
@@ -63,6 +64,7 @@ public class ItemVenda implements Serializable {
 		this.idItemVenda = idItemVenda;
 	}
 
+	@JsonBackReference
 	public Venda getVenda() {
 		return venda;
 	}

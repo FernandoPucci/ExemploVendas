@@ -29,7 +29,7 @@ import br.com.exemplo.vendas.service.VendaService;
  */
 @Component
 @RestController
-@Path("/API/produto")
+@Path("/API/vendas")
 public class VendaApiController {
 
 	private static final Logger log = LoggerFactory.getLogger(VendaApiController.class);

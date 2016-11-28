@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -21,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 @Table(name = "LKP_TP_EMBALAGEM")
 @JsonAutoDetect
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class TipoEmbalagem implements Serializable {
 
 	/**

@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -25,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 @Table(name = "PRODUTO")
 @JsonAutoDetect
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Produto implements Serializable {
 
 	/**
@@ -59,7 +61,7 @@ public class Produto implements Serializable {
 	private Double valorUnitario;
 
 	@JsonProperty("tp_embalagem")
-	@OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name = "ID_TP_EMBALAGEM")
 	private TipoEmbalagem tipoEmbalagem;
 

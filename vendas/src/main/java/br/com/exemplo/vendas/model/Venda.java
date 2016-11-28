@@ -122,7 +122,7 @@ public class Venda implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Venda [idVenda=" + idVenda + ", dataVenda=" + dataVenda + ", itens=" + itens + ", valorTotal="
+		return "Venda [idVenda=" + idVenda + ", dataVenda=" + Utils.formataData(dataVenda) + ", itens=" + itens + ", valorTotal="
 				+ valorTotal + "]";
 	}
 

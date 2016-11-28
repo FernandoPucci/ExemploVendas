@@ -42,8 +42,7 @@ public class TipoEmbalagem implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_TP_EMBALAGEM")
-	@JsonProperty("id_tp_embalagem")
+	@Column(name = "ID_TP_EMBALAGEM")	
 	private Long idTipoEmbalagem;
 
 	@Column(name = "TP_EMBALAGEM")
@@ -55,6 +54,7 @@ public class TipoEmbalagem implements Serializable {
 		return idTipoEmbalagem;
 	}
 
+	@JsonProperty("id_tp_embalagem")
 	public void setIdTipoEmbalagem(Long idTipoEmbalagem) {
 		this.idTipoEmbalagem = idTipoEmbalagem;
 	}

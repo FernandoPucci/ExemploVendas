@@ -84,7 +84,7 @@ public class VendaApiController {
 
 			vendaService.insertVendaService(venda);
 
-			return Response.status(200).entity("SUCESSO: " + venda.toString()).build();
+			return Response.status(200).entity("SUCESSO").build();
 
 		} catch (Exception ex) {
 			log.error("Transação inválida " + ex.getMessage());

@@ -8,15 +8,44 @@ import org.springframework.stereotype.Controller;
 import com.google.common.collect.Lists;
 
 import br.com.exemplo.vendas.dao.VendaDAO;
+import br.com.exemplo.vendas.model.ItemVenda;
 import br.com.exemplo.vendas.model.Venda;
+import br.com.exemplo.vendas.service.ProdutoService;
 
 @Controller
 public class VendaController {
-	
+
 	@Autowired
 	VendaDAO vendaDAO;
 
+	@Autowired
+	ProdutoService produtoService;
+
 	public void inserirVendaController(Venda venda) {
+
+		if (venda != null) {
+
+			double valorTotal = 0.0;
+
+			for (ItemVenda i : venda.getItens()) {
+
+				if (i.getProduto().getValorUnitario() == null) {
+
+					double quantidade = i.getQuantidade();
+					
+					i.getProduto().setValorUnitario(
+							produtoService.getProdutoByIdService(i.getProduto().getIdProduto()).getValorUnitario());
+					i.setQuantidade(quantidade);
+
+				}
+
+				valorTotal += i.getSubTotal();
+
+			}
+
+			venda.setValorTotal(valorTotal);
+
+		}
 
 		vendaDAO.save(venda);
 
@@ -37,6 +66,5 @@ public class VendaController {
 		return vendaDAO.findOne(id);
 
 	}
-
 
 }

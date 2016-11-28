@@ -1,9 +1,6 @@
 package br.com.exemplo.vendas;
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -55,76 +52,81 @@ public class VendaItemVendaApplicationTests {
 	public void contextLoads() {
 	}
 
-//	@Test
-//	public void insertAndListVendaTester() {
-//
-//		Venda venda = new Venda();
-//		TipoEmbalagem te = new TipoEmbalagem("Pacote 350g");
-//
-//		Produto produto = new Produto(null, "Macarrão Instantâneo", 2.60, te);
-//
-//		produtoService.insertProdutoService(produto);
-//
-//		Produto produtoById = produtoService.getProdutoByIdService(1L);
-//
-//		assertNotNull(produtoById);
-//
-//		ItemVenda item = new ItemVenda();
-//		item.setProduto(produtoById);
-//		item.setQuantidade(10.0);
-//
-//		venda.addItem(item);
-//
-//		vendaService.insertVendaService(venda);
-//
-//		List<Venda> listaTeste = vendaService.getAllVendaService();
-//
-//		Venda vendaById = vendaService.getVendaByIdService(1L);
-//
-//		assertNotNull(listaTeste);
-//		assertNotNull(vendaById);
-//		assertTrue(listaTeste.size() > 0);
-//
-//	}
+	// @Test
+	// public void insertAndListVendaTester() {
+	//
+	// Venda venda = new Venda();
+	// TipoEmbalagem te = new TipoEmbalagem("Pacote 350g");
+	//
+	// Produto produto = new Produto(null, "Macarrão Instantâneo", 2.60, te);
+	//
+	// produtoService.insertProdutoService(produto);
+	//
+	// Produto produtoById = produtoService.getProdutoByIdService(1L);
+	//
+	// assertNotNull(produtoById);
+	//
+	// ItemVenda item = new ItemVenda();
+	// item.setProduto(produtoById);
+	// item.setQuantidade(10.0);
+	//
+	// venda.addItem(item);
+	//
+	// vendaService.insertVendaService(venda);
+	//
+	// List<Venda> listaTeste = vendaService.getAllVendaService();
+	//
+	// Venda vendaById = vendaService.getVendaByIdService(1L);
+	//
+	// assertNotNull(listaTeste);
+	// assertNotNull(vendaById);
+	// assertTrue(listaTeste.size() > 0);
+	//
+	// }
 
-//	@Test
-//	public void addNewProduto(){
-//		
-//		TipoEmbalagem te = tipoEmbalagemService.getTipoEmbalagemByIdService(1L);
-//
-//		Produto produto = new Produto(null, "Macarrão Semola", 5.00, te);
-//
-//		produtoService.insertProdutoService(produto);
-//		
-//		Produto produtoById = produtoService.getProdutoByIdService(2L);
-//
-//		assertNotNull(produtoById);
-//		
-//	}
-//	
+	// @Test
+	// public void addNewProduto(){
+	//
+	// TipoEmbalagem te = tipoEmbalagemService.getTipoEmbalagemByIdService(1L);
+	//
+	// Produto produto = new Produto(null, "Macarrão Semola", 5.00, te);
+	//
+	// produtoService.insertProdutoService(produto);
+	//
+	// Produto produtoById = produtoService.getProdutoByIdService(2L);
+	//
+	// assertNotNull(produtoById);
+	//
+	// }
+	//
 	@Test
 	public void addProdutoToVenda() {
 
-		TipoEmbalagem te = tipoEmbalagemService.getTipoEmbalagemByIdService(1L);
+		try {
+			TipoEmbalagem te = tipoEmbalagemService.getTipoEmbalagemByIdService(1L);
 
-		Produto produto = new Produto(null, "Macarrão Semola", 5.00, te);
+			Produto produto = new Produto(null, "Macarrão Semola", 5.00, te);
 
-		produtoService.insertProdutoService(produto);
+			produtoService.insertProdutoService(produto);
 
-		Produto produtoById = produtoService.getProdutoByIdService(2L);
+			Produto produtoById = produtoService.getProdutoByIdService(2L);
 
-		assertNotNull(produtoById);
+			assertNotNull(produtoById);
 
-		ItemVenda item = new ItemVenda();
-		item.setProduto(produtoById);
-		item.setQuantidade(5.0);
+			ItemVenda item = new ItemVenda();
+			item.setProduto(produtoById);
+			item.setQuantidade(5.0);
 
-		Venda vendaById = vendaService.getVendaByIdService(1L);
+			Venda vendaById = vendaService.getVendaByIdService(1L);
 
-		vendaById.addItem(item);
+			vendaById.addItem(item);
 
-		vendaService.insertVendaService(vendaById);
-		
+			vendaService.insertVendaService(vendaById);
+		} catch (Exception ex) {
+			log.error(ex.getMessage());
+
+		}
+
 	}
 
 }

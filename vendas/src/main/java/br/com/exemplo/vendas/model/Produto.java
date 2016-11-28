@@ -61,7 +61,7 @@ public class Produto implements Serializable {
 	private Double valorUnitario;
 
 	@JsonProperty("tp_embalagem")
-	@OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade=CascadeType.MERGE) //verificar porque quando insiro pela primeira vez tem que estar ALL
 	@JoinColumn(name = "ID_TP_EMBALAGEM")
 	private TipoEmbalagem tipoEmbalagem;
 
